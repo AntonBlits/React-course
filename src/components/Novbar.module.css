@@ -8,3 +8,7 @@
    margin: 5px 15px;
    color: white;
 }
+
+.item.active {
+   color: black;
+}
