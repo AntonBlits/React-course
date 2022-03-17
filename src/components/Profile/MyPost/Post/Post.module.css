@@ -1,4 +1,9 @@
 .item {
    margin: 5px 30px;
-   color: gray;
+   color: black;
+}
+
+.item img {
+   width: 50px;
+   border-radius: 50%;
 }
