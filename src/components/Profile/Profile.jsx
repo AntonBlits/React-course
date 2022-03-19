@@ -9,7 +9,6 @@ const Profile = () => {
       <ProfileInfo />
       <MyPost />
    </div>
-
    );
 }
 
