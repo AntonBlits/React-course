@@ -6,9 +6,11 @@ const Friends = (props) => {
    const path = '/friends/' + props.id;
    return (
       <div className={s.friendItem}>
-         <img src={props.avatar} />
          <div>
-            <NavLink to={path}>{props.name}</NavLink>
+            <NavLink to={path}>
+               <img src={props.avatar} />
+               {props.name}
+            </NavLink>
          </div>
 
       </div>

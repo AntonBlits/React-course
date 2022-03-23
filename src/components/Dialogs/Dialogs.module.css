@@ -1,6 +1,7 @@
 .dialogs {
    display: grid;
    grid-template-columns: 2fr 10fr;
+   height: 100%;
 }
 .dialogItems {
    padding: 10px;
@@ -20,13 +21,21 @@
 }
 
 .messages {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
    padding: 10px;
 }
 .message {
    color: black;
+   flex: 1 0 auto;
 }
 .message:nth-child(even) {
    /* text-align: end; */
    padding-left: 100px;
    color: gray;
+}
+.sendMessages {
+   flex: 0 0 auto;
+   padding-bottom: 20px;
 }
