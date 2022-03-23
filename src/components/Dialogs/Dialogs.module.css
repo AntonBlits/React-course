@@ -5,15 +5,28 @@
 .dialogItems {
    padding: 10px;
 }
-
+.dialog {
+   padding: 5px;
+}
 .dialog a {
    color: rgb(60, 57, 66);
    text-decoration: none;
+   margin: 0px 0px 0px 5px;
+}
+.dialog img {
+   width: 30;
+   height: 30px;
+   border-radius: 50%;
 }
 
 .messages {
    padding: 10px;
 }
 .message {
-   color: rgb(129, 125, 124);
+   color: black;
+}
+.message:nth-child(even) {
+   /* text-align: end; */
+   padding-left: 100px;
+   color: gray;
 }

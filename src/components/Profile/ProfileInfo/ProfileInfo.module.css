@@ -1,5 +1,8 @@
 .image img {
-   width: 500px;
+   display: block;
+   width: 96%;
+   height: 300px;
+   padding: 20px;
 }
 .discriptionBlock {
    padding: 20px;

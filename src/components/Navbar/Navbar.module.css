@@ -1,7 +1,8 @@
 .nav {
    grid-area: n;
-   background: rgb(201, 63, 143);
+   background: rgb(95, 153, 207);
    padding: 20px;
+   font-size: 20px;
 }
 
 .item {
@@ -9,6 +10,19 @@
    text-decoration: none;
 }
 .active {
-   color: rgb(0, 174, 255);
+   color: rgb(51, 51, 51);
    text-decoration: none;
+}
+.setting {
+   margin: 15px 0px 0px 0px;
+}
+.friends {
+   margin: 50px 0px 0px 0px;
+   font-size: 25px;
+}
+.friendsLink {
+   display: flex;
+   justify-content: space-between;
+
+   margin-top: 10px;
 }
