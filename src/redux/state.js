@@ -1,82 +1,86 @@
-let rerenderEntireTree = () => { }
+let store = {
+   _state: {
+      dialogsPage: {
+         dialogs: [
+            {
+               id: 1, name: 'Dimych', avatar: 'https://www.kinogallery.com/pimages/2037/kinogallery.com-2037-472996.jpg'
+            },
+            { id: 2, name: 'Andrey', avatar: 'https://i.sunhome.ru/people/guestbook/u/34/1039971395.xxl.jpg' },
+            { id: 3, name: 'Sveta', avatar: 'https://avatars.mds.yandex.net/i?id=27051c05a006971697aaf1e0ec51220e-5858063-images-thumbs&n=13&exp=1' },
+            { id: 4, name: 'Sasha', avatar: 'https://starnote.ru/media/c/starnote/v3/photos/2017/7/12/b7433f388c/girl-portrait-1.jpg' },
+            { id: 5, name: 'Victor', avatar: 'https://www.kinowar.com/wp-content/uploads/2016/01/Gesichtermix-%D0%A8%D0%BE%D0%BD-%D0%9F%D0%B5%D0%BD%D0%BD-%D0%B8-%D0%94%D0%B8-%D0%9A%D0%B0%D0%BF%D1%80%D0%B8%D0%BE.jpg' },
+            { id: 6, name: 'Valera', avatar: 'https://avatars.mds.yandex.net/get-zen_doc/1658056/pub_6124d8c8ef3b285db33d273e_6124d9d637a42a0d0c300340/scale_1200' },
+         ],
 
-let state = {
-   dialogsPage: {
-      dialogs: [
-         {
-            id: 1, name: 'Dimych', avatar: 'https://www.kinogallery.com/pimages/2037/kinogallery.com-2037-472996.jpg'
-         },
-         { id: 2, name: 'Andrey', avatar: 'https://i.sunhome.ru/people/guestbook/u/34/1039971395.xxl.jpg' },
-         { id: 3, name: 'Sveta', avatar: 'https://avatars.mds.yandex.net/i?id=27051c05a006971697aaf1e0ec51220e-5858063-images-thumbs&n=13&exp=1' },
-         { id: 4, name: 'Sasha', avatar: 'https://starnote.ru/media/c/starnote/v3/photos/2017/7/12/b7433f388c/girl-portrait-1.jpg' },
-         { id: 5, name: 'Victor', avatar: 'https://www.kinowar.com/wp-content/uploads/2016/01/Gesichtermix-%D0%A8%D0%BE%D0%BD-%D0%9F%D0%B5%D0%BD%D0%BD-%D0%B8-%D0%94%D0%B8-%D0%9A%D0%B0%D0%BF%D1%80%D0%B8%D0%BE.jpg' },
-         { id: 6, name: 'Valera', avatar: 'https://avatars.mds.yandex.net/get-zen_doc/1658056/pub_6124d8c8ef3b285db33d273e_6124d9d637a42a0d0c300340/scale_1200' },
-      ],
-
-      messages: [
-         { id: 1, message: 'Hi' },
-         { id: 2, message: 'How is your IT-kamasutra' },
-         { id: 3, message: 'Yo' },
-         { id: 4, message: 'Yo' },
-         { id: 5, message: 'Kabzda' },
-         { id: 6, message: 'React top' },
-      ],
-      newMessageText: 'Hello world!',
+         messages: [
+            { id: 1, message: 'Hi' },
+            { id: 2, message: 'How is your IT-kamasutra' },
+            { id: 3, message: 'Yo' },
+            { id: 4, message: 'Yo' },
+            { id: 5, message: 'Kabzda' },
+            { id: 6, message: 'React top' },
+         ],
+         newMessageText: 'Hello world!',
+      },
+      profilePage: {
+         posts: [
+            { id: '1', message: 'Hello, my name is Antony', likesCount: 12 },
+            { id: '2', message: 'Hello React developer!', likesCount: 11 },
+            { id: '3', message: 'React top!', likesCount: 13 },
+         ],
+         newPostText: 'IT-kamasutra!',
+      },
+      sidebar: {
+         friends: [
+            {
+               id: 1, name: 'Dimych', avatar: 'https://www.kinogallery.com/pimages/2037/kinogallery.com-2037-472996.jpg'
+            },
+            { id: 2, name: 'Andrey', avatar: 'https://i.sunhome.ru/people/guestbook/u/34/1039971395.xxl.jpg' },
+            { id: 3, name: 'Sveta', avatar: 'https://avatars.mds.yandex.net/i?id=27051c05a006971697aaf1e0ec51220e-5858063-images-thumbs&n=13&exp=1' },
+            // { id: 4, name: 'Sasha', avatar: 'https://starnote.ru/media/c/starnote/v3/photos/2017/7/12/b7433f388c/girl-portrait-1.jpg' },
+            // { id: 5, name: 'Victor', avatar: 'https://www.kinowar.com/wp-content/uploads/2016/01/Gesichtermix-%D0%A8%D0%BE%D0%BD-%D0%9F%D0%B5%D0%BD%D0%BD-%D0%B8-%D0%94%D0%B8-%D0%9A%D0%B0%D0%BF%D1%80%D0%B8%D0%BE.jpg' },
+            // { id: 6, name: 'Valera', avatar: 'https://avatars.mds.yandex.net/get-zen_doc/1658056/pub_6124d8c8ef3b285db33d273e_6124d9d637a42a0d0c300340/scale_1200' },
+         ],
+      }
    },
-   profilePage: {
-      posts: [
-         { id: '1', message: 'Hello, my name is Antony', likesCount: 12 },
-         { id: '2', message: 'Hello React developer!', likesCount: 11 },
-         { id: '3', message: 'React top!', likesCount: 13 },
-      ],
-      newPostText: 'IT-kamasutra!',
+   getState() {
+      return this._state;
    },
-   sidebar: {
-      friends: [
-         {
-            id: 1, name: 'Dimych', avatar: 'https://www.kinogallery.com/pimages/2037/kinogallery.com-2037-472996.jpg'
-         },
-         { id: 2, name: 'Andrey', avatar: 'https://i.sunhome.ru/people/guestbook/u/34/1039971395.xxl.jpg' },
-         { id: 3, name: 'Sveta', avatar: 'https://avatars.mds.yandex.net/i?id=27051c05a006971697aaf1e0ec51220e-5858063-images-thumbs&n=13&exp=1' },
-         // { id: 4, name: 'Sasha', avatar: 'https://starnote.ru/media/c/starnote/v3/photos/2017/7/12/b7433f388c/girl-portrait-1.jpg' },
-         // { id: 5, name: 'Victor', avatar: 'https://www.kinowar.com/wp-content/uploads/2016/01/Gesichtermix-%D0%A8%D0%BE%D0%BD-%D0%9F%D0%B5%D0%BD%D0%BD-%D0%B8-%D0%94%D0%B8-%D0%9A%D0%B0%D0%BF%D1%80%D0%B8%D0%BE.jpg' },
-         // { id: 6, name: 'Valera', avatar: 'https://avatars.mds.yandex.net/get-zen_doc/1658056/pub_6124d8c8ef3b285db33d273e_6124d9d637a42a0d0c300340/scale_1200' },
-      ],
+
+   _callSubscriber() { },
+
+   subscribe(observer) {
+      this._callSubscriber = observer;
+   },
+
+   addPost() {
+      let newPost = {
+         id: 4,
+         message: this._state.profilePage.newPostText,
+         likesCount: 0,
+      }
+      this._state.profilePage.posts.push(newPost);
+      this._callSubscriber(this._state);
+   },
+
+   updateNewPostText(newText) {
+      this._state.profilePage.newPostText = newText;
+      this._callSubscriber(this._state);
+   },
+
+   sendMessage() {
+      let newMessage = {
+         id: 5,
+         message: this._state.dialogsPage.newMessageText,
+      }
+      this._state.dialogsPage.messages.push(newMessage);
+      this._callSubscriber(this._state);
+   },
+
+   updateNewMessageText(newText) {
+      this._state.dialogsPage.newMessageText = newText;
+      this._callSubscriber(this._state);
    }
 }
 
-export const addPost = () => {
-   let newPost = {
-      id: 4,
-      message: state.profilePage.newPostText,
-      likesCount: 0,
-   }
-   state.profilePage.posts.push(newPost);
-   rerenderEntireTree(state);
-}
-
-export const updateNewPostText = (newText) => {
-   state.profilePage.newPostText = newText;
-   rerenderEntireTree(state);
-}
-
-export const sendMessage = () => {
-   let newMessage = {
-      id: 5,
-      message: state.dialogsPage.newMessageText,
-   }
-   state.dialogsPage.messages.push(newMessage);
-   rerenderEntireTree(state);
-}
-
-export const updateNewMessageText = (newText) => {
-   state.dialogsPage.newMessageText = newText;
-   rerenderEntireTree(state);
-}
-
-export const subscribe = (observer) => {
-   rerenderEntireTree = observer;
-}
-
-
-export default state;
+export default store;
