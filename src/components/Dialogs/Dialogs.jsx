@@ -11,14 +11,14 @@ let Dialogs = (props) => {
 
    let newMessage = React.createRef();
 
-   let sendMessage = () => {
-      props.sendMessage();
-      props.updateNewMessageText('');
+   let addMessage = () => {
+      props.dispatch({ type: 'ADD-MESSAGE' });
+      props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: '' });
    }
 
    let onMessageChange = () => {
       let text = newMessage.current.value;
-      props.updateNewMessageText(text);
+      props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text });
    }
 
    return (
@@ -28,12 +28,12 @@ let Dialogs = (props) => {
          </div>
          <div className={s.messages}>
             {messageItem}
-            <div className={s.sendMessages}>
+            <div className={s.addMessages}>
                <div>
                   <textarea ref={newMessage} onChange={onMessageChange} value={props.state.newMessageText} />
                </div>
                <div>
-                  <button onClick={sendMessage}>Send</button>
+                  <button onClick={addMessage}>Send</button>
                </div>
             </div>
          </div>
