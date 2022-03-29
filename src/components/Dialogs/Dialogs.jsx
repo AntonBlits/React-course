@@ -12,7 +12,6 @@ let Dialogs = (props) => {
 
    let addMessage = () => {
       props.dispatch(addMessageActionCreate());
-      props.dispatch(updateNewMessageTextActionCreate(''));
    }
 
    let onMessageChange = (e) => {

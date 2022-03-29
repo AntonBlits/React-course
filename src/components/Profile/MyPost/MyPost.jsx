@@ -10,7 +10,6 @@ const MyPost = (props) => {
 
    let addPost = () => {
       props.dispatch(addPostActionCreate());
-      props.dispatch(updateNewPostTextActionCreate(''));
    }
 
    let onPostChange = (e) => {
