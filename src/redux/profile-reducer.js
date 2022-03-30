@@ -6,6 +6,7 @@ let initialState = {
       { id: '1', message: 'Hello, my name is Antony', likesCount: 12 },
       { id: '2', message: 'Hello React developer!', likesCount: 11 },
       { id: '3', message: 'React top!', likesCount: 13 },
+      { id: '4', message: 'IT-samurai!', likesCount: 1 },
    ],
    newPostText: 'IT-kamasutra!!!',
 }
