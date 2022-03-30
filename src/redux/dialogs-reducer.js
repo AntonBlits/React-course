@@ -17,7 +17,7 @@ let initialState = {
       { id: 1, message: 'Hi' },
       { id: 2, message: 'How is your IT-kamasutra' },
       { id: 3, message: 'Yo' },
-      { id: 4, message: 'Yo' },
+      { id: 4, message: 'Yo yo' },
       { id: 5, message: 'Kabzda' },
       { id: 6, message: 'React top' },
    ],
