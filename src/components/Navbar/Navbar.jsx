@@ -5,7 +5,7 @@ import Friends from '../Friends/Friends';
 
 const Navbar = (props) => {
 
-   let friendsItem = props.state.friends.map(friend => <Friends id={friend.id} name={friend.name} avatar={friend.avatar} />)
+   let friendsItem = props.sidebar.friends.map(friend => <Friends id={friend.id} name={friend.name} avatar={friend.avatar} />)
 
    const activeNavLink = ({ isActive }) => isActive ? s.active : s.item;
    return (<nav className={s.nav}>
