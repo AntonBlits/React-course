@@ -1,4 +1,3 @@
-import React from 'react';
 import { addMessageActionCreate, updateNewMessageTextActionCreate } from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
@@ -8,10 +7,11 @@ const mapStateToProps = (state) => {
       dialogsPage: state.dialogsPage,
    }
 }
+debugger;
 const mapDispatchToProps = (dispatch) => {
    return {
-      addMessage: () => dispatch(addMessageActionCreate()),
-      onMessageChange: (text) => dispatch(updateNewMessageTextActionCreate(text))
+      onAddMessage: () => dispatch(addMessageActionCreate()),
+      updateMessageChange: (text) => dispatch(updateNewMessageTextActionCreate(text))
 
    }
 }

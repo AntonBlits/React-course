@@ -11,7 +11,10 @@ let initialState = {
    ],
 }
 const sidebarReducer = (state = initialState, action) => {
-   return state;
+   return {
+      ...state,
+      friends: [...state.friends]
+   };
 }
 
 export default sidebarReducer;

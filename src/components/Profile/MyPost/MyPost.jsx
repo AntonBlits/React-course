@@ -3,16 +3,16 @@ import Post from './Post/Post';
 import s from './MyPost.module.css';
 
 const MyPost = (props) => {
-   debugger;
-   let postsElement = props.posts.map(post => <Post message={post.message} amount={post.likesCount} />)
 
-   // let onAddPost = () => {
-   //    props.onAddPost();
-   // }
+   let postsElement = props.posts.map(post => <Post key={post.id} message={post.message} amount={post.likesCount} />)
+
+   let onAddPost = () => {
+      props.addPost();
+   }
 
    let onPostChange = (e) => {
       let text = e.target.value;
-      props.onPostChange(text);
+      props.updateNewPostText(text);
    }
 
    return (
@@ -22,7 +22,7 @@ const MyPost = (props) => {
             <div> <textarea onChange={onPostChange} value={props.newPostText} />
             </div>
             <div>
-               <button onClick={props.onAddPost()}>add post</button>
+               <button onClick={onAddPost}>add post</button>
             </div>
          </div>
          <div className={s.posts}>
