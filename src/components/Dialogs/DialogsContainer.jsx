@@ -7,7 +7,6 @@ const mapStateToProps = (state) => {
       dialogsPage: state.dialogsPage,
    }
 }
-debugger;
 const mapDispatchToProps = (dispatch) => {
    return {
       onAddMessage: () => dispatch(addMessageActionCreate()),
