@@ -1,7 +1,44 @@
-.user {
+.users {
    padding: 20px;
+}
+.h2 {
+   padding-left: 20px;
+}
+.user {
+   margin-bottom: 15px;
+   display: grid;
+   grid-template-columns: 1fr 10fr;
+   color: gray;
 }
 .avatar img {
    width: 50px;
    border-radius: 50%;
+   margin: 0px 0px 5px 10px;
+}
+.info {
+   display: grid;
+   grid-template-columns: 4fr 1fr;
+   padding: 5px;
+   border: 1px solid gray;
+   border-radius: 10px;
+   width: 600px;
+}
+.fullname {
+   display: grid;
+   grid-template-rows: 2fr 1fr;
+}
+.location {
+   display: grid;
+   grid-template-rows: 2fr 1fr;
+}
+.status {
+   font-size: 14px;
+}
+.btm {
+   color: white;
+   background: rgb(95, 153, 207);
+   border: 0;
+   width: 70px;
+   padding: 5px;
+   font-size: 15px;
 }
