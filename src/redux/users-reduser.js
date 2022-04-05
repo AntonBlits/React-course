@@ -3,11 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-   users: [
-      { id: 1, avatar: "https://thumbs.dreamstime.com/b/handsome-man-black-suit-white-shirt-posing-studio-attractive-guy-fashion-hairstyle-confident-man-short-beard-125019349.jpg", followed: true, fullname: 'Anton', status: 'I am a boss', location: { city: 'Rostov-na-Donu', country: 'Russia' } },
-      { id: 2, avatar: "https://thumbs.dreamstime.com/b/handsome-man-black-suit-white-shirt-posing-studio-attractive-guy-fashion-hairstyle-confident-man-short-beard-125019349.jpg", followed: false, fullname: 'Dmitriy', status: 'I am a boss too', location: { city: 'Minsk', country: 'Belarus' } },
-      { id: 3, avatar: "https://thumbs.dreamstime.com/b/handsome-man-black-suit-white-shirt-posing-studio-attractive-guy-fashion-hairstyle-confident-man-short-beard-125019349.jpg", followed: true, fullname: 'Mishel', status: 'I am a boss too', location: { city: 'Paris', country: 'Francia' } },
-   ]
+   users: []
 }
 
 const usersReduser = (state = initialState, action) => {
@@ -33,10 +29,7 @@ const usersReduser = (state = initialState, action) => {
             })
          }
       case SET_USERS:
-         return {
-            ...state,
-            users: [...state.users, ...action.users]
-         }
+         return { ...state, users: [...action.users] }
 
       default:
          return state;
