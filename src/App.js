@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
@@ -16,14 +16,14 @@ function App() {
          <Header />
          <NavbarContainer />
          <div className='app-wrapper-content'>
-            <Routes>
-               <Route path='/profile/' element={<ProfileContainer />} />
-               <Route path='/dialogs/' element={<DialogsContainer />} />
-               <Route path='/news/' element={<News />} />
-               <Route path='/music/' element={<Music />} />
-               <Route path='/users/' element={<UsersContainer />} />
-               <Route path='/setting/' element={<Settings />} />
-            </Routes>
+            <Switch>
+               <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+               <Route path='/dialogs/' render={() => <DialogsContainer />} />
+               <Route path='/news/' render={() => <News />} />
+               <Route path='/music/' render={() => <Music />} />
+               <Route path='/users/' render={() => <UsersContainer />} />
+               <Route path='/setting/' render={() => <Settings />} />
+            </Switch>
          </div>
       </div >
    )

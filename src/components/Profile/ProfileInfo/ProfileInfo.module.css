@@ -4,6 +4,17 @@
    height: 300px;
    padding: 20px;
 }
+
 .discriptionBlock {
+   display: grid;
+   grid-template-columns: 1fr 2fr;
    padding: 20px;
+}
+
+.infoAboutMe {
+   margin-left: 20px;
+   padding: 0 20px;
+}
+.infoAboutMe > div {
+   margin-bottom: 20px;
 }

@@ -3,6 +3,9 @@ import Preloader from '../../common/preloader/Preloader';
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
+   if (!props.profile) {
+      return <Preloader />
+   }
    return (
       <div>
          <div className={s.image}>
@@ -12,7 +15,25 @@ const ProfileInfo = (props) => {
             {/* <img src='https://www.researchgate.net/publication/353422038/figure/fig2/AS:1048906112700416@1627090113328/Image-7-4-3-2-5-9-3-11-45-3-0-2-4-0-1-7.ppm'></img> */}
          </div>
          <div className={s.discriptionBlock}>
-            <img src={props.profile.photos.large} />
+            <div className={s.avatar}>
+               <img src={props.profile.photos.large} />
+            </div>
+            <div className={s.infoAboutMe}>
+               <h2>{props.profile.fullName}</h2>
+               <div className={s.about}>aboutMe: {props.profile.aboutMe}</div>
+               <div className={s.job}>lookingForAJobDescription: {props.profile.lookingForAJobDescription}</div>
+               <div className={s.contacts}>
+                  <h3>Contacts:</h3>
+                  <div>{props.profile.contacts.facebook}</div>
+                  <div>{props.profile.contacts.website}</div>
+                  <div>{props.profile.contacts.vk}</div>
+                  <div>{props.profile.contacts.twitter}</div>
+                  <div>{props.profile.contacts.instagram}</div>
+                  <div>{props.profile.contacts.youtube}</div>
+                  <div>{props.profile.contacts.github}</div>
+                  <div>{props.profile.contacts.mainLink}</div>
+               </div>
+            </div>
          </div>
       </div>
    );
