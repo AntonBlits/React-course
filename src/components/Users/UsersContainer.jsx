@@ -35,7 +35,7 @@ class UsersContainer extends React.Component {
             onPageChanged={this.onPageChanged}
             isFeatching={this.isFeatching}
             followingInProgress={this.props.followingInProgress}
-            toggleFollowingProgress={this.toggleFollowingProgress}
+            toggleFollowingProgress={this.props.toggleFollowingProgress}
          />
       </>
    }
