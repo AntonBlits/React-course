@@ -7,10 +7,14 @@ import Header from './Header';
 class HeaderContainer extends React.Component {
    componentDidMount() {
       axios.get('https://social-network.samuraijs.com/api/1.0/auth/me',
-         { withCredentials: true })
+         {
+            withCredentials: true,
+            headers: {
+               'API-KEY': 'd46ccef0-1611-4167-a06a-3b89053f0b0e'
+            }
+         })
          .then(response => {
             this.props.setAuthUserData(response.data.data);
-            debugger;
          })
    }
    render() {

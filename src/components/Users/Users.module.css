@@ -1,5 +1,7 @@
 .users {
    padding: 20px;
+   width: 1000px;
+   overflow: hidden;
 }
 .h2 {
    padding-left: 20px;

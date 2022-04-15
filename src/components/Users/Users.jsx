@@ -1,7 +1,9 @@
 import React from "react";
 import s from "./Users.module.css";
 import userphoto from '../../assets/images/noavatar.png';
+import *as axios from 'axios';
 import { NavLink } from "react-router-dom";
+import { followAPI } from "../../api/api";
 
 const Users = (props) => {
 
@@ -25,8 +27,44 @@ const Users = (props) => {
             </div>
             <div>
                {u.followed
-                  ? <button className={s.btm} onClick={() => props.unfollow(u.id)}>Unfollow</button>
-                  : <button className={s.btm} onClick={() => props.follow(u.id)}>Follow</button>}
+                  ? <button className={s.btm} onClick={() => {
+
+                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                        {
+                           withCredentials: true,
+                           headers: {
+                              'API-KEY': 'd46ccef0-1611-4167-a06a-3b89053f0b0e'
+                           }
+                        }
+                     )
+
+                     // followAPI.unfollow(u.id)
+                     //    .then((data) => {
+                     //       if (data.resultCode === 0) {
+                     //          props.unfollow(u.id)
+                     //       }
+                     //    });
+                  }
+                  }>Unfollow</button>
+                  : <button className={s.btm} onClick={() => {
+
+                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
+                        {
+                           withCredentials: true,
+                           headers: {
+                              'API-KEY': 'd46ccef0-1611-4167-a06a-3b89053f0b0e'
+                           }
+                        }
+                     )
+
+                     // followAPI.follow(u.id)
+                     //    .then((data) => {
+                     //       if (data.resultCode === 0) {
+                     //          props.follow(u.id)
+                     //       }
+                     //    });
+                  }
+                  }>Follow</button>}
             </div>
          </div>
          <div className={s.info}>
