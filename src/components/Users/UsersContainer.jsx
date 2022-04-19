@@ -4,23 +4,24 @@ import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleI
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 import { usersAPI } from "../../api/api";
+
 class UsersContainer extends React.Component {
    componentDidMount() {
       this.props.toggleIsFetching(true);
       usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-         .then((response) => {
+         .then((data) => {
             this.props.toggleIsFetching(false);
-            this.props.setUsers(response.items);
-            this.props.setTotalUsersCount(response.totalCount);
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
          });
    }
    onPageChanged = (pageNumber) => {
       this.props.setCurrentPage(pageNumber);
       this.props.toggleIsFetching(true);
-      usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-         .then((response) => {
+      usersAPI.getUsers(pageNumber, this.props.pageSize)
+         .then((data) => {
             this.props.toggleIsFetching(false);
-            this.props.setUsers(response.items);
+            this.props.setUsers(data.items);
          });
    }
    render() {

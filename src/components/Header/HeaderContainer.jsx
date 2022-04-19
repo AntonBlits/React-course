@@ -10,11 +10,13 @@ class HeaderContainer extends React.Component {
          {
             withCredentials: true,
             headers: {
-               'API-KEY': 'd46ccef0-1611-4167-a06a-3b89053f0b0e'
-            }
+               'API-KEY': '5400d653-6750-4332-9550-92553efe8c85',
+            },
          })
          .then(response => {
-            this.props.setAuthUserData(response.data.data);
+            if (response.data.resultCode === 0) {
+               this.props.setAuthUserData(response.data.data);
+            }
          })
    }
    render() {
