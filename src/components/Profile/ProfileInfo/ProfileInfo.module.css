@@ -18,3 +18,9 @@
 .infoAboutMe > div {
    margin-bottom: 20px;
 }
+.avatar {
+   width: 300px;
+}
+.avatar img {
+   width: 100%;
+}
