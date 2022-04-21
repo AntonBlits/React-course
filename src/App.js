@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Music from './components/Music/Music';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import News from './components/News/News';
+import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
+import Login from './components/login/Login';
 
 function App() {
    return (
@@ -23,6 +24,7 @@ function App() {
                <Route path='/music/' render={() => <Music />} />
                <Route path='/users/' render={() => <UsersContainer />} />
                <Route path='/setting/' render={() => <Settings />} />
+               <Route path='/login/' render={() => <Login />} />
             </Switch>
          </div>
       </div >
