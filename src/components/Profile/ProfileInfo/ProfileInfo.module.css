@@ -24,3 +24,9 @@
 .avatar img {
    width: 100%;
 }
+.status {
+   font-size: 18px;
+   font-style: italic;
+   font-weight: 500;
+   color: rgb(66, 64, 64);
+}

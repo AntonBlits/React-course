@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes, Switch } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
@@ -26,6 +26,15 @@ function App() {
                <Route path='/setting/' render={() => <Settings />} />
                <Route path='/login/' render={() => <Login />} />
             </Switch>
+            {/* <Routes>
+               <Route path='/profile/:userId' element={<ProfileContainer />} />
+               <Route path='/dialogs/' element={<DialogsContainer />} />
+               <Route path='/news/' element={<News />} />
+               <Route path='/music/' element={<Music />} />
+               <Route path='/users/' element={<UsersContainer />} />
+               <Route path='/setting/' element={<Settings />} />
+               <Route path='/login/' element={<Login />} />
+            </Routes> */}
          </div>
       </div >
    )
