@@ -17,7 +17,7 @@ function App() {
          <HeaderContainer />
          <NavbarContainer />
          <div className='app-wrapper-content'>
-            <Switch>
+            {/* <Switch>
                <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                <Route path='/dialogs/' render={() => <DialogsContainer />} />
                <Route path='/news/' render={() => <News />} />
@@ -25,8 +25,8 @@ function App() {
                <Route path='/users/' render={() => <UsersContainer />} />
                <Route path='/setting/' render={() => <Settings />} />
                <Route path='/login/' render={() => <Login />} />
-            </Switch>
-            {/* <Routes>
+            </Switch> */}
+            <Routes>
                <Route path='/profile/:userId' element={<ProfileContainer />} />
                <Route path='/dialogs/' element={<DialogsContainer />} />
                <Route path='/news/' element={<News />} />
@@ -34,7 +34,7 @@ function App() {
                <Route path='/users/' element={<UsersContainer />} />
                <Route path='/setting/' element={<Settings />} />
                <Route path='/login/' element={<Login />} />
-            </Routes> */}
+            </Routes>
          </div>
       </div >
    )

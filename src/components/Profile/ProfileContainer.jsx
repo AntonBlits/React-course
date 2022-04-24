@@ -4,35 +4,36 @@ import { getUserProfile } from '../../redux/profile-reducer';
 import { connect } from 'react-redux';
 import { useParams, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-class ProfileContainer extends React.Component {
-   componentDidMount() {
 
-      let userId = this.props.match.params.userId;
+// class ProfileContainer extends React.Component {
+//    componentDidMount() {
+
+//       let userId = this.props.match.params.userId;
+//       if (!userId) {
+//          userId = 23380;
+//       }
+
+//       this.props.getUserProfile(userId);
+//    }
+//    render() {
+//       return <Profile {...this.props} profile={this.props.profile} />
+//    }
+// }
+
+const ProfileContainer = (props) => {
+
+   let { userId } = useParams();
+
+   useEffect(() => {
       if (!userId) {
          userId = 23380;
       }
+      props.getUserProfile(userId)
+   }, []);
 
-      this.props.getUserProfile(userId);
-   }
-   render() {
-      return <Profile {...this.props} profile={this.props.profile} />
-   }
+   return <Profile {...props} profile={props.profile} />
+
 }
-
-// const ProfileContainer = (props) => {
-
-//    let params = useParams();
-
-//    if (!params.userId) {
-//       params.userId = 23380;
-//    }
-
-//    useEffect(() => props.getUserProfile(params.userId));
-
-
-//    return <Profile {...props} profile={props.profile} />
-
-// }
 
 const mapStateToProps = (state) => {
    return {
@@ -45,6 +46,6 @@ const mapStateToProps = (state) => {
 
 export default compose(
    connect(mapStateToProps, { getUserProfile }),
-   withRouter,
+   // withRouter,
    // withAuthRedirect
 )(ProfileContainer);
