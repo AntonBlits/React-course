@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Profile from './Profile';
-import { getUserProfile } from '../../redux/profile-reducer';
+import { getUserProfile, getStatus, updateStatus } from '../../redux/profile-reducer';
 import { connect } from 'react-redux';
 import { useParams, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -22,16 +22,15 @@ import { compose } from 'redux';
 
 const ProfileContainer = (props) => {
 
-   let { userId } = useParams();
+
+   const userId = useParams().userId;
 
    useEffect(() => {
-      if (!userId) {
-         userId = 23380;
-      }
-      props.getUserProfile(userId)
+      props.getUserProfile(userId);
+      props.getStatus(userId)
    }, []);
 
-   return <Profile {...props} profile={props.profile} />
+   return <Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
 
 }
 
@@ -40,12 +39,13 @@ const mapStateToProps = (state) => {
       posts: state.profilePage.posts,
       newPostText: state.profilePage.newPostText,
       profile: state.profilePage.profile,
+      status: state.profilePage.status,
       isAuth: state.auth.isAuth,
    }
 }
 
 export default compose(
-   connect(mapStateToProps, { getUserProfile }),
+   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
    // withRouter,
    // withAuthRedirect
 )(ProfileContainer);

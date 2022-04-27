@@ -6,6 +6,7 @@ import ProfileStatus from './ProfileStatus';
 
 
 const ProfileInfo = (props) => {
+
    if (!props.profile) {
       return <Preloader />
    }
@@ -20,7 +21,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.infoAboutMe}>
                <h1>{props.profile.fullName}</h1>
-               <ProfileStatus status={'Hello my friends'} />
+               <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                <div className={s.about}>aboutMe: {props.profile.aboutMe}</div>
                <div className={s.job}>lookingForAJobDescription: {props.profile.lookingForAJobDescription}</div>
                <div className={s.contacts}>
