@@ -14,6 +14,7 @@ import { compose } from 'redux';
 //       }
 
 //       this.props.getUserProfile(userId);
+//       this.props.getStatus(userId);
 //    }
 //    render() {
 //       return <Profile {...this.props} profile={this.props.profile} />

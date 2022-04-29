@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import s from './ProfileInfo.module.css';
-
 
 
 // class ProfileStatus extends React.Component {
@@ -47,35 +46,35 @@ const ProfileStatus = (props) => {
       editMode: false,
       status: props.status
    }
-   let [state, setState] = useState(statusProfile);
-
-   useEffect(() => {
-      props.updateStatus(state.status);
-   }, [props.status])
-
+   let [statusUser, setStatusUser] = useState(statusProfile);
 
    const activateEditMode = () => {
-      setState({ editMode: true })
+      setStatusUser({ ...statusUser, editMode: true })
    }
 
    const deactivateEditMode = () => {
-      setState({ editMode: false })
+      setStatusUser({ ...statusUser, editMode: false });
+      props.updateStatus(statusUser.status);
    }
+
+   useEffect(() => {
+      setStatusUser({ ...statusUser, status: props.status });
+   }, [props.status])
+
 
    const onStatusChange = (e) => {
-      setState({ ...state, status: e.target.value })
+      setStatusUser({ ...statusUser, status: e.target.value })
    }
-
-
    return <div className={s.status}>
-      {state.editMode
+      {statusUser.editMode
          ? <div>
-            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={state.status} />
+            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={statusUser.status} />
          </div>
          : <div>
             <span onDoubleClick={activateEditMode}>{props.status || '___'}</span>
          </div>}
    </div>
 }
+
 
 export default ProfileStatus;
