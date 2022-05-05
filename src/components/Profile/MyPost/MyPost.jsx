@@ -4,12 +4,19 @@ import s from './MyPost.module.css';
 import { useForm } from "react-hook-form";
 
 const MyPostForm = (props) => {
-   const { register, reset, handleSubmit } = useForm();
+   const { register, reset, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
 
    return (
       <form onSubmit={handleSubmit(props.onSubmit)}>
          <div>
-            <textarea {...register('newPostText')} />
+            <textarea className={errors.newPostText && s.error} {...register('newPostText', {
+               required: true,
+               maxLength: 10
+            })} />
+            {errors.newPostText?.type === "required" && <div style={{ color: 'red' }}>
+               Your textarea is required</div>}
+            {errors.newPostText?.type === "maxLength" && <div style={{ color: 'red' }}>
+               Your textarea exceed maxLength</div>}
          </div>
          <div>
             <button>add post</button>

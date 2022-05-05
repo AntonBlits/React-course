@@ -39,3 +39,6 @@
    flex: 0 0 auto;
    padding-bottom: 20px;
 }
+.error {
+   border: 3px solid red;
+}

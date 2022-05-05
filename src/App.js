@@ -34,6 +34,7 @@ function App() {
                <Route path='/users/' element={<UsersContainer />} />
                <Route path='/setting/' element={<Settings />} />
                <Route path='/login/' element={<Login />} />
+               <Route path='/' element={<Login />} />
             </Routes>
          </div>
       </div >

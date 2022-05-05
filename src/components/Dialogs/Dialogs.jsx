@@ -5,11 +5,15 @@ import DialogItem from './DialogItem/DialogItem';
 import { useForm } from 'react-hook-form';
 
 const DialogsForm = (props) => {
-   const { register, handleSubmit } = useForm();
+   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
    return (
-      <form onSubmit={handleSubmit(props.onSubmit)} className={s.addMessages}>
+      <form onSubmit={handleSubmit(props.onSubmit)} className={s.addMessages} >
          <div>
-            <textarea {...register('newMessageText')} placeholder='Enter your message' />
+            <textarea className={errors.newMessageText && s.error} {...register("newMessageText", { required: true, maxLength: 10 })} />
+            {errors.newMessageText?.type === "required" && <div style={{ color: 'red' }}>
+               Your textarea is required</div>}
+            {errors.newMessageText?.type === "maxLength" && <div style={{ color: 'red' }}>
+               Your textarea exceed maxLength</div>}
          </div>
          <div>
             <button>Send</button>
