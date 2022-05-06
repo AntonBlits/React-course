@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 import { useForm } from 'react-hook-form';
 
 const DialogsForm = (props) => {
-   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
+   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' });
+
+   useEffect(() => {
+      reset()
+   }, [props.onSubmit]);
+
    return (
       <form onSubmit={handleSubmit(props.onSubmit)} className={s.addMessages} >
          <div>
-            <textarea className={errors.newMessageText && s.error} {...register("newMessageText", { required: true, maxLength: 10 })} />
-            {errors.newMessageText?.type === "required" && <div style={{ color: 'red' }}>
-               Your textarea is required</div>}
-            {errors.newMessageText?.type === "maxLength" && <div style={{ color: 'red' }}>
-               Your textarea exceed maxLength</div>}
+            <textarea placeholder='Enter message' className={errors.newMessageText && s.error} {...register("newMessageText", {
+               required: 'Your textarea is required',
+               maxLength: {
+                  value: 10,
+                  message: 'Your textarea exceed maxLength 10'
+               }
+            })} />
+            {errors?.newMessageText && <div style={{ color: 'red' }}>{errors.newMessageText?.message}</div>}
          </div>
          <div>
             <button>Send</button>
