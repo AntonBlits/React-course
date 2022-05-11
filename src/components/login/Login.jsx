@@ -47,7 +47,7 @@ const Login = (props) => {
       props.login(email, password, rememberMe);
    }
    if (props.isAuth) {
-      return <Navigate replace to='/profile/23380' />
+      return <Navigate replace to='/profile' />
    }
 
    return <div className={s.email}>
@@ -58,7 +58,8 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
    return {
-      isAuth: state.auth.isAuth
+      isAuth: state.auth.isAuth,
+      userId: state.auth.userId
    }
 }
 

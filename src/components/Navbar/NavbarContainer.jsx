@@ -2,9 +2,7 @@ import Navbar from './Navbar';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-   return {
-      sidebar: state.sidebar,
-   }
+   return {}
 }
 const mapDispatchToProps = (dispatch) => {
    return {}

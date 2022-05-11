@@ -22,10 +22,10 @@ import { compose } from 'redux';
 // }
 
 const ProfileContainer = (props) => {
-
-
-   const userId = useParams().userId;
-
+   let userId = useParams().userId;
+   if (!userId) {
+      userId = props.authorizedUserId;
+   }
    useEffect(() => {
       props.getUserProfile(userId);
       props.getStatus(userId)
@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
       profile: state.profilePage.profile,
       status: state.profilePage.status,
       isAuth: state.auth.isAuth,
+      authorizedUserId: state.auth.userId
    }
 }
 

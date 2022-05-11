@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, Switch } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -10,8 +10,18 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/login/Login';
+import { connect } from 'react-redux';
+import Preloader from './components/common/preloader/Preloader';
+import { initializeApp } from './redux/app-reduser';
 
-function App() {
+const App = (props) => {
+   useEffect(() => {
+      props.initializeApp();
+   }, []);
+
+   if (!props.initialized) {
+      return <Preloader />
+   }
    return (
       <div className='app-wrapper'>
          <HeaderContainer />
@@ -41,4 +51,11 @@ function App() {
    )
 }
 
-export default App;
+const mapStateToProps = (state) => {
+   return {
+      initialized: state.app.initialized,
+
+   }
+}
+
+export default connect(mapStateToProps, { initializeApp })(App);
