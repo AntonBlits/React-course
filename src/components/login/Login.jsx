@@ -47,7 +47,7 @@ const Login = (props) => {
       props.login(email, password, rememberMe);
    }
    if (props.isAuth) {
-      return <Navigate replace to='/profile' />
+      return <Navigate replace to={'/profile/' + props.userId} />
    }
 
    return <div className={s.email}>

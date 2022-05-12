@@ -17,15 +17,14 @@ import { compose } from 'redux';
 //       this.props.getStatus(userId);
 //    }
 //    render() {
-//       return <Profile {...this.props} profile={this.props.profile} />
+//       return <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>
 //    }
 // }
 
 const ProfileContainer = (props) => {
+
    let userId = useParams().userId;
-   if (!userId) {
-      userId = props.authorizedUserId;
-   }
+
    useEffect(() => {
       props.getUserProfile(userId);
       props.getStatus(userId)

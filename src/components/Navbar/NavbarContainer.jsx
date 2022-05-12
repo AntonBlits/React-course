@@ -2,7 +2,9 @@ import Navbar from './Navbar';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-   return {}
+   return {
+      userId: state.auth.userId
+   }
 }
 const mapDispatchToProps = (dispatch) => {
    return {}
