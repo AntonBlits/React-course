@@ -5,10 +5,10 @@ const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
    posts: [
-      { id: '1', message: 'Hello, my name is Antony', likesCount: 12 },
-      { id: '2', message: 'Hello React developer!', likesCount: 11 },
-      { id: '3', message: 'React top!', likesCount: 13 },
-      { id: '4', message: 'IT-samurai!', likesCount: 1 },
+      { id: '1', message: 'I React developer!', likesCount: 12 },
+      { id: '2', message: 'JavaScript', likesCount: 11 },
+      { id: '3', message: 'HTML', likesCount: 13 },
+      { id: '4', message: 'CSS', likesCount: 1 },
    ],
    profile: null,
    status: ''
