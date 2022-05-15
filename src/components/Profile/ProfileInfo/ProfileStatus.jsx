@@ -42,33 +42,31 @@ import s from './ProfileInfo.module.css';
 
 
 const ProfileStatus = (props) => {
-   let statusProfile = {
-      editMode: false,
-      status: props.status
-   }
-   let [statusUser, setStatusUser] = useState(statusProfile);
+
+   let [editMode, setEditMode] = useState(false);
+   let [status, setStatus] = useState(props.status);
 
    const activateEditMode = () => {
-      setStatusUser({ ...statusUser, editMode: true })
+      setEditMode(true);
    }
 
    const deactivateEditMode = () => {
-      setStatusUser({ ...statusUser, editMode: false });
-      props.updateStatus(statusUser.status);
+      setEditMode(false);
+      props.updateStatus(status);
    }
 
    useEffect(() => {
-      setStatusUser({ ...statusUser, status: props.status });
-   }, [props.status])
+      setStatus(props.status);
+   }, [props.status]);
 
 
    const onStatusChange = (e) => {
-      setStatusUser({ ...statusUser, status: e.target.value })
+      setStatus(e.target.value)
    }
    return <div className={s.status}>
-      {statusUser.editMode
+      {editMode
          ? <div>
-            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={statusUser.status} />
+            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={status} />
          </div>
          : <div>
             <span onDoubleClick={activateEditMode}>{props.status || '___'}</span>
