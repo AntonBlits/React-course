@@ -28,24 +28,26 @@ import { getUsers, getCurrentPage, getFollowingInProgress, getPageSize, getTotal
 //       </>
 //    }
 // }
-const UsersContainer = (props) => {
+const UsersContainer = ({ requestUsers, currentPage, pageSize,
+   users, totalUsersCount, followingInProgress,
+   follow, unfollow, isFetching }) => {
 
    useEffect(() => {
-      props.requestUsers(props.currentPage, props.pageSize);
+      requestUsers(currentPage, pageSize);
    }, []);
 
    const onPageChanged = (pageNumber) => {
-      props.requestUsers(pageNumber, props.pageSize);
+      requestUsers(pageNumber, pageSize);
    }
    return <>
-      {props.isFetching ? <Preloader /> : null}
-      <Users users={props.users}
-         pageSize={props.pageSize}
-         totalUsersCount={props.totalUsersCount}
-         currentPage={props.currentPage}
-         followingInProgress={props.followingInProgress}
-         follow={props.follow}
-         unfollow={props.unfollow}
+      {isFetching ? <Preloader /> : null}
+      <Users users={users}
+         pageSize={pageSize}
+         totalUsersCount={totalUsersCount}
+         currentPage={currentPage}
+         followingInProgress={followingInProgress}
+         follow={follow}
+         unfollow={unfollow}
          onPageChanged={onPageChanged}
       />
    </>

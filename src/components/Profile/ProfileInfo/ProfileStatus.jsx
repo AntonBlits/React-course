@@ -41,10 +41,10 @@ import s from './ProfileInfo.module.css';
 // }
 
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({ status, updateStatus }) => {
 
    let [editMode, setEditMode] = useState(false);
-   let [status, setStatus] = useState(props.status);
+   let [statusUser, setStatus] = useState(status);
 
    const activateEditMode = () => {
       setEditMode(true);
@@ -52,12 +52,12 @@ const ProfileStatus = (props) => {
 
    const deactivateEditMode = () => {
       setEditMode(false);
-      props.updateStatus(status);
+      updateStatus(statusUser);
    }
 
    useEffect(() => {
-      setStatus(props.status);
-   }, [props.status]);
+      setStatus(status);
+   }, [status]);
 
 
    const onStatusChange = (e) => {
@@ -66,10 +66,10 @@ const ProfileStatus = (props) => {
    return <div className={s.status}>
       {editMode
          ? <div>
-            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={status} />
+            <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode} value={statusUser} />
          </div>
          : <div>
-            <span onDoubleClick={activateEditMode}>{props.status || '___'}</span>
+            <span onDoubleClick={activateEditMode}>{status || '___'}</span>
          </div>}
    </div>
 }

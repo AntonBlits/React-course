@@ -5,32 +5,32 @@ import userphoto from '../../../assets/images/noavatar.png';
 import ProfileStatus from './ProfileStatus';
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
 
-   if (!props.profile) {
+   if (!profile) {
       return <Preloader />
    }
    return (
       <div>
          <div className={s.discriptionBlock}>
             <div className={s.avatar}>
-               <img src={props.profile.photos.large != null ? props.profile.photos.large : userphoto} />
+               <img src={profile.photos.large != null ? profile.photos.large : userphoto} />
             </div>
             <div className={s.infoAboutMe}>
-               <h1>{props.profile.fullName}</h1>
-               <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-               <div className={s.about}>aboutMe: {props.profile.aboutMe}</div>
-               <div className={s.job}>lookingForAJobDescription: {props.profile.lookingForAJobDescription}</div>
+               <h1>{profile.fullName}</h1>
+               <ProfileStatus status={status} updateStatus={updateStatus} />
+               <div className={s.about}>aboutMe: {profile.aboutMe}</div>
+               <div className={s.job}>lookingForAJobDescription: {profile.lookingForAJobDescription}</div>
                <div className={s.contacts}>
                   <h3>Contacts:</h3>
-                  <div>{props.profile.contacts.facebook}</div>
-                  <div>{props.profile.contacts.website}</div>
-                  <div>{props.profile.contacts.vk}</div>
-                  <div>{props.profile.contacts.twitter}</div>
-                  <div>{props.profile.contacts.instagram}</div>
-                  <div>{props.profile.contacts.youtube}</div>
-                  <div>{props.profile.contacts.github}</div>
-                  <div>{props.profile.contacts.mainLink}</div>
+                  <div>{profile.contacts.facebook}</div>
+                  <div>{profile.contacts.website}</div>
+                  <div>{profile.contacts.vk}</div>
+                  <div>{profile.contacts.twitter}</div>
+                  <div>{profile.contacts.instagram}</div>
+                  <div>{profile.contacts.youtube}</div>
+                  <div>{profile.contacts.github}</div>
+                  <div>{profile.contacts.mainLink}</div>
                </div>
             </div>
          </div>

@@ -5,15 +5,15 @@ import { connect } from "react-redux";
 import { login } from "../../redux/auth-reduser"
 import { Navigate } from "react-router-dom";
 
-const LoginForm = (props) => {
+const LoginForm = ({ onSubmit }) => {
    const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' });
 
    useEffect(() => {
       reset();
-   }, [props.onSubmit]);
+   }, [onSubmit]);
 
    return (
-      <form onSubmit={handleSubmit(props.onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
          <div>
             <input className={errors.email && s.error} {...register('email', {
                required: "Your input is required! "
@@ -40,14 +40,14 @@ const LoginForm = (props) => {
    )
 }
 
-const Login = (props) => {
+const Login = ({ login, isAuth, userId }) => {
 
    const onSubmit = (data) => {
       let { email, password, rememberMe } = data;
-      props.login(email, password, rememberMe);
+      login(email, password, rememberMe);
    }
-   if (props.isAuth) {
-      return <Navigate replace to={'/profile/' + props.userId} />
+   if (isAuth) {
+      return <Navigate replace to={'/profile/' + userId} />
    }
 
    return <div className={s.email}>

@@ -1,0 +1,12 @@
+.selectedPage {
+   font-weight: bold;
+   color: rgb(95, 153, 207);
+   font-size: 18px;
+}
+.page {
+   cursor: pointer;
+   padding-bottom: 20px;
+}
+.page span {
+   margin-left: 5px;
+}

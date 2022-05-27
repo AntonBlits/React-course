@@ -3,15 +3,15 @@ import Post from './Post/Post';
 import s from './MyPost.module.css';
 import { useForm } from "react-hook-form";
 
-const MyPostForm = (props) => {
+const MyPostForm = ({ onSubmit }) => {
    const { register, reset, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
 
    useEffect(() => {
       reset();
-   }, [props.onSubmit])
+   }, [onSubmit])
 
    return (
-      <form onSubmit={handleSubmit(props.onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
          <div>
             <textarea placeholder='Write a post' className={errors.newPostText && s.error} {...register('newPostText', {
                required: 'Your textarea is required',
@@ -28,12 +28,14 @@ const MyPostForm = (props) => {
       </form>
    )
 }
-const MyPost = (props) => {
 
-   let postsElement = props.posts.map(post => <Post key={post.id} message={post.message} amount={post.likesCount} />)
+
+const MyPost = ({ posts, addPost }) => {
+
+   let postsElement = posts.map(post => <Post key={post.id} message={post.message} amount={post.likesCount} />)
 
    let onAddPost = (data) => {
-      props.addPost(data.newPostText);
+      addPost(data.newPostText);
    }
 
    return (
@@ -49,11 +51,3 @@ const MyPost = (props) => {
 
 export default MyPost;
 
-{/* <form onSubmit={handleSubmit(onSubmit)}>
-         <div>
-            <textarea onChange={onPostChange} value={props.newPostText} />
-         </div>
-         <div>
-            <button onClick={onAddPost}>add post</button>
-         </div>
-      </form> */}

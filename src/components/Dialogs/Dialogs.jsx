@@ -4,15 +4,15 @@ import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 import { useForm } from 'react-hook-form';
 
-const DialogsForm = (props) => {
+const DialogsForm = ({ onSubmit }) => {
    const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' });
 
    useEffect(() => {
       reset()
-   }, [props.onSubmit]);
+   }, [onSubmit]);
 
    return (
-      <form onSubmit={handleSubmit(props.onSubmit)} className={s.addMessages} >
+      <form onSubmit={handleSubmit(onSubmit)} className={s.addMessages} >
          <div>
             <textarea placeholder='Enter message' className={errors.newMessageText && s.error} {...register("newMessageText", {
                required: 'Your textarea is required',
@@ -30,15 +30,15 @@ const DialogsForm = (props) => {
    )
 }
 
-const Dialogs = (props) => {
+const Dialogs = ({ dialogsPage, onAddMessage }) => {
 
-   let state = props.dialogsPage;
+   let state = dialogsPage;
 
    let dialogItem = state.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar} />);
    let messageItem = state.messages.map(message => <Message key={message.id} message={message.message} />);
 
    let addMessage = (data) => {
-      props.onAddMessage(data.newMessageText);
+      onAddMessage(data.newMessageText);
    }
 
    return (

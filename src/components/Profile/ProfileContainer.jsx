@@ -21,16 +21,16 @@ import { compose } from 'redux';
 //    }
 // }
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({ getUserProfile, getStatus, profile, status, updateStatus, ...props }) => {
 
    let userId = useParams().userId;
 
    useEffect(() => {
-      props.getUserProfile(userId);
-      props.getStatus(userId)
+      getUserProfile(userId);
+      getStatus(userId)
    }, []);
 
-   return <Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+   return <Profile {...props} profile={profile} status={status} updateStatus={updateStatus} />
 
 }
 
