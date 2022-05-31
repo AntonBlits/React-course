@@ -2,7 +2,7 @@
    "name": "react-kabzda",
    "version": "0.1.0",
    "private": true,
-   "homepage": "https://github.com/AntonBlits/React-course",
+   "homepage": "https://antonblits.github.io/React-course",
    "dependencies": {
       "@testing-library/react": "^12.1.4",
       "@testing-library/user-event": "^13.5.0",
