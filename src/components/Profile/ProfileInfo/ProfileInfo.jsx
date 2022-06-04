@@ -5,16 +5,24 @@ import userphoto from '../../../assets/images/noavatar.png';
 import ProfileStatus from './ProfileStatus';
 
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
 
    if (!profile) {
       return <Preloader />
    }
+
+   const onMainPhotoSelector = (e) => {
+      if (e.target.files.length) {
+         savePhoto(e.target.files[0]);
+      }
+   }
+
    return (
       <div>
          <div className={s.discriptionBlock}>
             <div className={s.avatar}>
-               <img src={profile.photos.large != null ? profile.photos.large : userphoto} />
+               <img src={profile.photos.large || userphoto} />
+               {isOwner && <input className={s.editPhoto} type="file" onChange={onMainPhotoSelector} />}
             </div>
             <div className={s.infoAboutMe}>
                <h1>{profile.fullName}</h1>

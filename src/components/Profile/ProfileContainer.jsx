@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Profile from './Profile';
-import { getUserProfile, getStatus, updateStatus } from '../../redux/profile-reducer';
+import { getUserProfile, getStatus, updateStatus, savePhoto } from '../../redux/profile-reducer';
 import { connect } from 'react-redux';
 import { useParams, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -21,23 +21,26 @@ import { compose } from 'redux';
 //    }
 // }
 
-const ProfileContainer = ({ getUserProfile, getStatus, profile, status, updateStatus, ...props }) => {
+const ProfileContainer = ({ getUserProfile, getStatus, profile, status, updateStatus, savePhoto, ...props }) => {
 
    let userId = useParams().userId;
+   if (!userId) {
+      userId = props.authorizedUserId;
+   }
+
 
    useEffect(() => {
       getUserProfile(userId);
       getStatus(userId)
-   }, []);
+   }, [userId]);
 
-   return <Profile {...props} profile={profile} status={status} updateStatus={updateStatus} />
+   return <Profile {...props} profile={profile} status={status}
+      updateStatus={updateStatus} isOwner={!useParams().userId} savePhoto={savePhoto} />
 
 }
 
 const mapStateToProps = (state) => {
    return {
-      posts: state.profilePage.posts,
-      newPostText: state.profilePage.newPostText,
       profile: state.profilePage.profile,
       status: state.profilePage.status,
       isAuth: state.auth.isAuth,
@@ -46,7 +49,7 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
    // withRouter,
    // withAuthRedirect
 )(ProfileContainer);
