@@ -16,7 +16,7 @@
    padding: 0 20px;
 }
 .infoAboutMe > div {
-   margin-bottom: 20px;
+   margin-bottom: 10px;
 }
 .avatar {
    width: 300px;
@@ -30,6 +30,22 @@
    font-weight: 500;
    color: rgb(66, 64, 64);
 }
-.editPhoto {
-  
+.contact {
+  padding-left: 20px;
+}
+.btn{
+   color: white;
+   background: rgb(95, 153, 207);
+   border: 0;
+   padding: 5px;
+   margin-top: 10px;
+   font-size: 15px;
+}
+.editInput {
+   width: 550px;
+   display: flex;
+   justify-content: space-between;
+}
+.input {
+   width: 250px;
 }
