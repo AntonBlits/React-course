@@ -7,17 +7,37 @@ import s from './ProfileInfo.module.css';
 
 const ProfileDataForm = ({ onSubmit, profile }) => {
 
-   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
+   const { register, handleSubmit, formState: { errors } } = useForm({
+      mode: 'all', defaultValues: {
+         fullName: profile.fullName,
+         aboutMe: profile.aboutMe,
+         lookingForJob: profile.lookingForJob,
+         lookingForAJobDescription: profile.lookingForAJobDescription,
+
+      }
+   });
 
    return <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{profile.fullName}</h1>
       <div className={s.editInput}>
-         <b>about me:</b>
+         <b>full Name:</b>
+         <div>
+            <input className={s.input}  {...register('fullName', {
+               maxLength: {
+                  value: 30,
+                  message: 'Your input mast have maxLength 30!'
+               }
+            })} />
+            {errors?.fullName && <div style={{ color: 'red' }}>{errors.fullName.message}</div>}
+         </div>
+      </div>
+
+      <div className={s.editInput}>
+         <b>about Me:</b>
          <div>
             <input className={s.input}  {...register('aboutMe', {
                maxLength: {
-                  value: 10,
-                  message: 'Your input mast have maxLength 10!'
+                  value: 50,
+                  message: 'Your input mast have maxLength 50!'
                }
             })} />
             {errors?.aboutMe && <div style={{ color: 'red' }}>{errors.aboutMe.message}</div>}
@@ -25,9 +45,9 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
       </div>
 
       <div className={s.editInput}>
-         <b>looking for job:</b>
+         <b>looking For Job:</b>
          <div>
-            <input className={s.input}  {...register('lookingforjob',)} type="checkbox" />
+            <input className={s.input}  {...register('lookingForJob',)} type="checkbox" />
          </div>
       </div>
 
@@ -36,8 +56,8 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
          <div>
             <input className={s.input}  {...register('lookingForAJobDescription', {
                maxLength: {
-                  value: 10,
-                  message: 'Your input mast have maxLength 10!'
+                  value: 30,
+                  message: 'Your input mast have maxLength 30!'
                }
             })} />
             {errors?.lookingForAJobDescription && <div style={{ color: 'red' }}>{errors.lookingForAJobDescription.message}</div>}
@@ -46,14 +66,26 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
 
       <div className={s.contacts}>
          <h3>Contacts:</h3>
-         {/* {Object.keys(profile.contacts).map(key => {
-            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
-         })} */}
+         {Object.keys(profile.contacts).map(key => {
+            return <div key={key} className={s.editInput + ' ' + s.contactInput}>
+               <b>{key}:</b>
+               <div>
+                  <input className={s.input}  {...register('contacts.' + key, {
+                     maxLength: {
+                        value: 100,
+                        message: 'Your input mast have maxLength 100!'
+                     }
+                  })} />
+               </div>
+            </div>
+         })}
       </div>
       <div>
-         <button className={s.btn} onClick={() => { }}>save profile</button>
+         <button className={s.btn}>save profile</button>
       </div>
    </form>
+
+
 }
 
 export default ProfileDataForm;
