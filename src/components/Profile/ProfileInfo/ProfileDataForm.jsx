@@ -6,22 +6,13 @@ import s from './ProfileInfo.module.css';
 
 
 const ProfileDataForm = ({ onSubmit, profile }) => {
-
-   const { register, handleSubmit, formState: { errors } } = useForm({
-      mode: 'all', defaultValues: {
-         fullName: profile.fullName,
-         aboutMe: profile.aboutMe,
-         lookingForJob: profile.lookingForJob,
-         lookingForAJobDescription: profile.lookingForAJobDescription,
-
-      }
-   });
+   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
 
    return <form onSubmit={handleSubmit(onSubmit)}>
       <div className={s.editInput}>
          <b>full Name:</b>
          <div>
-            <input className={s.input}  {...register('fullName', {
+            <input className={s.input} defaultValue={profile.fullName}  {...register('fullName', {
                maxLength: {
                   value: 30,
                   message: 'Your input mast have maxLength 30!'
@@ -34,7 +25,7 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
       <div className={s.editInput}>
          <b>about Me:</b>
          <div>
-            <input className={s.input}  {...register('aboutMe', {
+            <input className={s.input} defaultValue={profile.aboutMe}  {...register('aboutMe', {
                maxLength: {
                   value: 50,
                   message: 'Your input mast have maxLength 50!'
@@ -47,14 +38,14 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
       <div className={s.editInput}>
          <b>looking For Job:</b>
          <div>
-            <input className={s.input}  {...register('lookingForJob',)} type="checkbox" />
+            <input className={s.input} defaultValue={profile.lookingForJob}  {...register('lookingForJob',)} type="checkbox" />
          </div>
       </div>
 
       <div className={s.editInput}>
          <b>looking For A Job Description:</b>
          <div>
-            <input className={s.input}  {...register('lookingForAJobDescription', {
+            <input className={s.input} defaultValue={profile.lookingForAJobDescription}  {...register('lookingForAJobDescription', {
                maxLength: {
                   value: 30,
                   message: 'Your input mast have maxLength 30!'
@@ -70,7 +61,7 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
             return <div key={key} className={s.editInput + ' ' + s.contactInput}>
                <b>{key}:</b>
                <div>
-                  <input className={s.input}  {...register('contacts.' + key, {
+                  <input className={s.input} defaultValue={profile.contacts[key]}  {...register('contacts.' + key, {
                      maxLength: {
                         value: 100,
                         message: 'Your input mast have maxLength 100!'
