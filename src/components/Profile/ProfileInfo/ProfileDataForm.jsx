@@ -36,9 +36,9 @@ const ProfileDataForm = ({ onSubmit, profile }) => {
       </div>
 
       <div className={s.editInput}>
-         <b>looking For Job:</b>
+         <b>looking For A Job:</b>
          <div>
-            <input className={s.input} defaultValue={profile.lookingForJob}  {...register('lookingForJob',)} type="checkbox" />
+            <input className={s.input} {...register('lookingForAJob',)} type="checkbox" />
          </div>
       </div>
 

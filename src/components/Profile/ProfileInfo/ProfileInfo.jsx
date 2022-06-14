@@ -47,7 +47,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
    return <div>
       <h1>{profile.fullName}</h1>
       {profile.aboutMe && <div><b>about Me:</b> {profile.aboutMe}</div>}
-      <div><b>looking For Job:</b> {profile.lookingForJob ? "yes" : "no"}</div>
+      <div><b>looking For A Job:</b> {profile.lookingForAJob ? "yes" : "no"}</div>
       {profile.lookingForAJobDescription && <div ><b>looking For A Job Description:</b> {profile.lookingForAJobDescription}</div>}
       <div className={s.contacts}>
          <h3>Contacts:</h3>

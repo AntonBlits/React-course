@@ -23,7 +23,7 @@ const MyPostForm = ({ onSubmit }) => {
             {errors?.newPostText && <div style={{ color: 'red' }}>{errors?.newPostText?.message}</div>}
          </div>
          <div>
-            <button>add post</button>
+            <button className={s.btn}>add post</button>
          </div>
       </form>
    )

@@ -24,7 +24,7 @@ const DialogsForm = ({ onSubmit }) => {
             {errors?.newMessageText && <div style={{ color: 'red' }}>{errors.newMessageText?.message}</div>}
          </div>
          <div>
-            <button>Send</button>
+            <button className={s.btn}>Send</button>
          </div>
       </form>
    )

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { login } from "../../redux/auth-reduser"
 import { Navigate } from "react-router-dom";
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, captchaUrl }) => {
    const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' });
 
    useEffect(() => {
@@ -33,18 +33,27 @@ const LoginForm = ({ onSubmit }) => {
          <div>
             <input {...register('rememberMe')} type="checkbox" /> remember me
          </div>
+
+         {captchaUrl && <img src={captchaUrl} />}
          <div>
-            <button>Login</button>
+            {captchaUrl &&
+               <input  {...register('captcha', {
+                  required: 'Your input is required!',
+               })} placeholder="Symbols of captcha" />
+            }</div>
+
+         <div>
+            <button className={s.btn}>Login</button>
          </div>
       </form>
    )
 }
 
-const Login = ({ login, isAuth, userId }) => {
+const Login = ({ login, isAuth, userId, captchaUrl }) => {
 
    const onSubmit = (data) => {
-      let { email, password, rememberMe } = data;
-      login(email, password, rememberMe);
+      let { email, password, rememberMe, captcha } = data;
+      login(email, password, rememberMe, captcha);
    }
    if (isAuth) {
       return <Navigate replace to={'/profile/' + userId} />
@@ -52,14 +61,15 @@ const Login = ({ login, isAuth, userId }) => {
 
    return <div className={s.email}>
       <h1>Login</h1>
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} captchaUrl={captchaUrl} />
    </div>
 }
 
 const mapStateToProps = (state) => {
    return {
       isAuth: state.auth.isAuth,
-      userId: state.auth.userId
+      userId: state.auth.userId,
+      captchaUrl: state.auth.captchaUrl,
    }
 }
 

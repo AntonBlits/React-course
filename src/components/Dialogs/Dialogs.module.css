@@ -42,3 +42,10 @@
 .error {
    border: 3px solid red;
 }
+.btn {
+   color: black;
+   font-size: 16px;
+   padding: 5px;
+   margin: 15px 0px 15px 0px;
+   background: rgb(95, 153, 207);
+}
