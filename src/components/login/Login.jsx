@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import s from "../login/login.module.css";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { login } from "../../redux/auth-reduser"
+import { login } from "../../redux/auth-reducer"
 import { Navigate } from "react-router-dom";
 
 const LoginForm = ({ onSubmit, captchaUrl }) => {

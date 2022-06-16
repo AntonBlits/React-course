@@ -19,7 +19,7 @@ let initialState = {
    followingInProgress: [],
 }
 
-const usersReduser = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
 
    switch (action.type) {
       case FOLLOW:
@@ -106,5 +106,5 @@ export const unfollow = (userId) => async (dispatch) => {
 
 }
 
-export default usersReduser;
+export default usersReducer;
 

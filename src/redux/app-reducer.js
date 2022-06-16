@@ -1,12 +1,12 @@
 import { authAPI } from "../api/api";
-import { getAuthUserData } from "./auth-reduser";
+import { getAuthUserData } from "./auth-reducer";
 let INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 let initialState = {
    initialized: false
 }
 
-const appReduser = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
    switch (action.type) {
       case INITIALIZED_SUCCESS:
          return {
@@ -30,4 +30,4 @@ export const initializeApp = () => (dispatch) => {
 }
 
 
-export default appReduser;
+export default appReducer;
