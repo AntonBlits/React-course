@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-course/static/css/main.e28a72bf.css",
-    "main.js": "/React-course/static/js/main.038ac044.js",
+    "main.js": "/React-course/static/js/main.cae199ad.js",
     "static/css/236.da8cd16e.chunk.css": "/React-course/static/css/236.da8cd16e.chunk.css",
     "static/js/236.43a0e658.chunk.js": "/React-course/static/js/236.43a0e658.chunk.js",
     "static/css/808.85a003fc.chunk.css": "/React-course/static/css/808.85a003fc.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/preloader.gif": "/React-course/static/media/preloader.3fb26d9b3c3c823ae786.gif",
     "index.html": "/React-course/index.html",
     "main.e28a72bf.css.map": "/React-course/static/css/main.e28a72bf.css.map",
-    "main.038ac044.js.map": "/React-course/static/js/main.038ac044.js.map",
+    "main.cae199ad.js.map": "/React-course/static/js/main.cae199ad.js.map",
     "236.da8cd16e.chunk.css.map": "/React-course/static/css/236.da8cd16e.chunk.css.map",
     "236.43a0e658.chunk.js.map": "/React-course/static/js/236.43a0e658.chunk.js.map",
     "808.85a003fc.chunk.css.map": "/React-course/static/css/808.85a003fc.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.e28a72bf.css",
-    "static/js/main.038ac044.js"
+    "static/js/main.cae199ad.js"
   ]
 }
